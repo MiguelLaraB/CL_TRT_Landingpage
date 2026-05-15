@@ -1,0 +1,107 @@
+---
+import "../assets/index.css";
+---
+
+<section class="content-section coverage-section" id="sucursales">
+    <div class="section-shell">
+        <div class="coverage-layout">
+            
+            <!-- Lado Izquierdo: Cards de Alcance -->
+            <div class="coverage-info">
+                <p class="section-kicker">Sedes y cobertura</p>
+                <h2>Sedes y cobertura</h2>
+                <p class="section-description">Capacidad logística estratégica en zonas industriales clave. Identifica qué sucursal atiende tu zona para entregas express.</p>
+
+                <div class="coverage-cards">
+                    <!-- CDMX -->
+                    <article class="cov-card active" data-target="node-cdmx">
+                        <div class="cov-card-header">
+                            <div class="cov-indicator glow-green"></div>
+                            <h3>CDMX & Área Metropolitana</h3>
+                            <span class="cov-badge">Sede Vallejo</span>
+                        </div>
+                        <div class="cov-card-body">
+                            <p class="cov-desc"><strong>Cobertura total</strong> en toda la CDMX y municipios conurbados del Edomex. Entregas el mismo día.</p>
+                            <div class="cov-actions">
+                                <a href="https://wa.me/5215500000000" class="btn-text">WhatsApp CDMX &rarr;</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Veracruz -->
+                    <article class="cov-card active" data-target="node-ver">
+                        <div class="cov-card-header">
+                            <div class="cov-indicator glow-green"></div>
+                            <h3>Veracruz Puerto & Conurbada</h3>
+                            <span class="cov-badge">Sede Centro</span>
+                        </div>
+                        <div class="cov-card-body">
+                            <p class="cov-desc"><strong>Radio de 50 km</strong> (Boca del Río, Alvarado y alrededores). Envíos foráneos al resto del estado por paquetería.</p>
+                            <div class="cov-actions">
+                                <a href="https://wa.me/5222900000000" class="btn-text">WhatsApp Veracruz &rarr;</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Hidalgo -->
+                    <article class="cov-card upcoming" data-target="node-hgo">
+                        <div class="cov-card-header">
+                            <div class="cov-indicator glow-orange"></div>
+                            <h3>Hidalgo Centro</h3>
+                            <span class="cov-badge">Próximamente 2026</span>
+                        </div>
+                        <div class="cov-card-body">
+                            <p class="cov-desc">Pre-registro abierto para clientes industriales en la zona de Pachuca y alrededores.</p>
+                            <div class="cov-actions">
+                                <a href="#" class="btn-text btn-text-muted">Unirme a lista de espera &rarr;</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Lado Derecho: Mapa Minimalista -->
+            <div class="coverage-map-wrapper">
+                <div class="double-bezel-outer map-outer">
+                    <div class="double-bezel-inner map-inner">
+                        <!-- Fondo estilo Radar/Grid -->
+                        <div class="map-radar-bg"></div>
+                        
+                        <div class="map-interactive-area">
+                            <div class="map-silhouette"></div>
+                            <!-- Conexiones SVG -->
+                            <svg class="map-connections" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                <!-- Línea CDMX - Veracruz -->
+                                <path d="M35,60 L75,70" class="route-line" />
+                                <!-- Línea CDMX - Hidalgo -->
+                                <path d="M35,60 L40,35" class="route-line dashed" />
+                            </svg>
+
+                            <!-- Nodos -->
+                            <!-- CDMX: Radio Sólido (todo el estado) -->
+                            <div class="map-node node-cdmx" id="node-cdmx">
+                                <div class="node-radius radius-solid"></div>
+                                <div class="node-core"></div>
+                                <span class="node-label">CDMX</span>
+                            </div>
+
+                            <!-- VERACRUZ: Radio Difuminado (alrededores) -->
+                            <div class="map-node node-ver" id="node-ver">
+                                <div class="node-radius radius-fade"></div>
+                                <div class="node-core"></div>
+                                <span class="node-label">VER</span>
+                            </div>
+
+                            <!-- HIDALGO: Sin radio, solo punto -->
+                            <div class="map-node node-hgo" id="node-hgo">
+                                <div class="node-core core-upcoming"></div>
+                                <span class="node-label">HGO</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

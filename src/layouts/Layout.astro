@@ -1,23 +1,55 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+	title = "TRT | Transmisiones y Rodamientos de Tlalnepantla",
+	description = "Suministro líder de refacciones automotrices en CDMX, Veracruz e Hidalgo. Transmisiones y Rodamientos de Tlalnepantla."
+} = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+		
+		<!-- El CSS global se importará en las páginas o aquí si es necesario -->
 	</head>
 	<body>
 		<slot />
+		<script is:inline src="/main.js?v=1.2"></script>
 	</body>
 </html>
 
-<style>
+<style is:global>
+	:root {
+		--font-family: 'Plus Jakarta Sans', sans-serif;
+		--header-height: 80px;
+	}
+	
+	html {
+		scroll-behavior: smooth;
+		scroll-padding-top: var(--header-height);
+	}
+
 	html,
 	body {
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		font-family: var(--font-family);
 	}
+
+	/* Estilos base si son necesarios */
 </style>
