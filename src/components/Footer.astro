@@ -17,7 +17,7 @@ import trtLogo from "../assets/trt-logo.png";
         <div class="footer-nav">
             <h4>Sedes</h4>
             <p>CDMX</p>
-            <p>Veracruz</p>
+            <p>Rio Blanco</p>
         </div>
         <div class="footer-nav">
             <h4>Catálogos</h4>
@@ -28,8 +28,11 @@ import trtLogo from "../assets/trt-logo.png";
         </div>
         <div class="footer-nav">
             <h4>Contacto</h4>
-            <a href="https://wa.me/5215500000000" class="footer-contact-link"
-                >WhatsApp</a
+            <a href="https://wa.me/5215620162470" class="footer-contact-link"
+                >WhatsApp CDMX</a
+            >
+            <a href="https://wa.me/5212711339376" class="footer-contact-link"
+                >WhatsApp Río Blanco</a
             >
             <a href="mailto:trt.ventas1@gmail.com" class="footer-contact-link"
                 >Correo CDMX</a
@@ -47,10 +50,10 @@ import trtLogo from "../assets/trt-logo.png";
 <style>
     /* --- 2.10 Footer --- */
     .site-footer {
-        background-color: var(--color-surface-dark);
-        color: var(--color-text-muted);
+        background-color: #ffffff;
+        color: var(--color-text-dark);
         padding: var(--space-16) 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .footer-grid {
@@ -60,7 +63,7 @@ import trtLogo from "../assets/trt-logo.png";
     }
 
     .footer-logo {
-        color: #ffffff;
+        color: var(--color-brand-primary);
         font-size: 1.5rem;
         font-weight: 900;
         margin-bottom: var(--space-4);
@@ -69,8 +72,9 @@ import trtLogo from "../assets/trt-logo.png";
 
     .brand-fullname {
         font-size: 0.9rem;
-        color: var(--color-text-light);
+        color: var(--color-text-dark);
         margin-bottom: var(--space-2);
+        font-weight: 500;
     }
 
     .brand-schedule {
@@ -79,7 +83,7 @@ import trtLogo from "../assets/trt-logo.png";
     }
 
     .footer-nav h4 {
-        color: #ffffff;
+        color: var(--color-text-dark);
         font-size: 0.75rem;
         font-weight: 800;
         text-transform: uppercase;
@@ -90,7 +94,7 @@ import trtLogo from "../assets/trt-logo.png";
     .footer-nav a,
     .footer-nav p {
         display: block;
-        color: var(--color-text-muted);
+        color: var(--color-text-dark);
         text-decoration: none;
         font-size: 0.9rem;
         margin-bottom: var(--space-3);
@@ -98,7 +102,7 @@ import trtLogo from "../assets/trt-logo.png";
     }
 
     .footer-nav a:hover {
-        color: var(--color-brand-accent);
+        color: var(--color-brand-primary);
     }
 
     .footer-contact-link {
@@ -109,6 +113,7 @@ import trtLogo from "../assets/trt-logo.png";
         font-size: 0.75rem !important;
         opacity: 0.6;
         margin-top: var(--space-8);
+        color: var(--color-text-muted);
     }
 
     @media (max-width: 980px) {
