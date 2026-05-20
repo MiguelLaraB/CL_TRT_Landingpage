@@ -1,16 +1,12 @@
 ---
-
+import heroBg from "../assets/hero-image.jpeg";
 ---
 
 <section class="hero-section cinematic-full">
     <!-- Background Image with Scrim & Technical Grid -->
     <div class="hero-visual-bg">
         <div class="hero-blueprint-grid"></div>
-        <img
-            src="assets/img/hero-image.jpeg"
-            alt="Almacén TRT"
-            class="bg-img"
-        />
+        <img src={heroBg.src} alt="Almacén TRT" class="bg-img" />
         <div class="bg-scrim"></div>
     </div>
 
@@ -85,7 +81,11 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        filter: saturate(0.8) brightness(0.9);
+        /* Desaturamos la imagen para que el degradado sea el protagonista */
+        filter: saturate(0.3) brightness(1.1) contrast(1.1);
+        /* Difuminado inferior para que se integre con la siguiente sección */
+        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
     }
 
     .bg-scrim {
@@ -94,12 +94,22 @@
         left: 0;
         width: 100%;
         height: 100%;
+        /* Degradado vibrante usando los colores de la marca */
         background: linear-gradient(
             105deg,
-            rgba(0, 0, 0, 0.65) 0%,
-            rgba(0, 0, 0, 0.35) 50%,
-            rgba(0, 0, 0, 0.1) 100%
+            var(--color-surface-dark) 5%,
+            rgba(29, 49, 129, 0.85) 50%, /* --color-brand-primary */
+            rgba(234, 88, 12, 0.45) 100% /* --color-brand-accent */
         );
+        mix-blend-mode: multiply; /* Esto fusiona el degradado con la imagen */
+    }
+    
+    /* Capa extra para legibilidad del texto en la izquierda */
+    .bg-scrim::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, var(--color-surface-dark) 0%, transparent 60%);
     }
 
     .hero-blueprint-grid {
@@ -188,9 +198,13 @@
         .bg-scrim {
             background: linear-gradient(
                 0deg,
-                rgba(0, 0, 0, 0.9) 18%,
-                rgba(0, 0, 0, 0.53) 100%
+                var(--color-surface-dark) 10%,
+                rgba(29, 49, 129, 0.9) 60%,
+                rgba(234, 88, 12, 0.5) 100%
             );
+        }
+        .bg-scrim::after {
+            background: linear-gradient(0deg, var(--color-surface-dark) 0%, transparent 60%);
         }
         .hero-container-full {
             padding: 0 var(--page-gutter);

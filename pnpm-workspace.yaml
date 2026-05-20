@@ -1,0 +1,5 @@
+packages:
+  - '.'
+
+# Requiere que los paquetes tengan al menos 1 día (1440 minutos) de publicados
+minimumReleaseAge: 1440
