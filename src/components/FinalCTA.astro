@@ -94,28 +94,19 @@
                                 >
                                 <span class="btn-subtitle">SUCURSAL Rio blanco</span>
                             </a>
-                            <a
-                                href="mailto:trt.ventas1@gmail.com"
-                                class="btn--email contact-btn contact-btn--email"
-                            >
-                                <span class="btn-city">Correo CDMX</span>
-                                <span class="btn-subtitle"
-                                    >SUCURSAL Tlalnepantla</span
-                                >
-                            </a>
-                            <a
-                                href="mailto:trt.ventas6@gmail.com"
-                                class="btn--email contact-btn contact-btn--email"
-                            >
-                                <span class="btn-city">Correo Rio Blanco</span
-                                >
-                                <span class="btn-subtitle">SUCURSAL Rio blanco</span>
-                            </a>
                         </div>
-                        <p class="cta-footer-note">
-                            Respuesta prioritaria en horario hábil. Sin
-                            formularios largos.
-                        </p>
+                        
+                        <div class="contact-emails-text">
+                            <div class="email-item">
+                                <strong>Correo CDMX:</strong>
+                                <button type="button" class="copy-email-btn" data-email="trt.ventas1@gmail.com">trt.ventas1@gmail.com</button>
+                            </div>
+                            <div class="email-item">
+                                <strong>Correo Rio Blanco:</strong>
+                                <button type="button" class="copy-email-btn" data-email="trt.ventas6@gmail.com">trt.ventas6@gmail.com</button>
+                            </div>
+                        </div>
+
                     </div>
                 </article>
             </div>
@@ -404,19 +395,104 @@
         box-shadow: 0 8px 20px rgba(234, 88, 12, 0.3);
     }
 
-    .contact-btn--email {
-        background: #475569 !important;
-        box-shadow: 0 4px 12px rgba(71, 85, 105, 0.2);
+    .contact-emails-text {
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        text-align: center;
+        font-size: 0.85rem;
+        color: #e2e8f0;
     }
 
-    .contact-btn--email:hover {
-        background: #334155 !important;
-        box-shadow: 0 8px 20px rgba(51, 65, 85, 0.3);
+    .email-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .contact-emails-text strong {
+        color: var(--color-brand-accent);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .copy-email-btn {
+        background: none;
+        border: none;
+        color: #e2e8f0;
+        font-family: inherit;
+        font-size: 0.9rem;
+        cursor: pointer;
+        padding: 4px 8px;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-decoration-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .copy-email-btn:hover {
+        color: white;
+        background: rgba(255, 255, 255, 0.05);
+        text-decoration-color: var(--color-brand-accent);
+    }
+
+    .copy-email-btn.copied {
+        color: #10b981;
+        text-decoration: none;
+        background: rgba(16, 185, 129, 0.1);
+        font-weight: bold;
     }
 
     @media (max-width: 480px) {
-        .contact-actions-grid {
+        .contact-actions-grid,
+        .contact-emails-text {
             grid-template-columns: 1fr;
+        }
+        
+        .contact-emails-text {
+            gap: 20px;
         }
     }
 </style>
+
+<script>
+    const setupCopyButtons = () => {
+        const copyBtns = document.querySelectorAll('.copy-email-btn');
+        copyBtns.forEach(btn => {
+            // Remove existing listener to avoid duplicates if setup is called multiple times
+            const newBtn = btn.cloneNode(true);
+            btn.parentNode.replaceChild(newBtn, btn);
+            
+            newBtn.addEventListener('click', async () => {
+                const email = newBtn.getAttribute('data-email');
+                if (email) {
+                    try {
+                        await navigator.clipboard.writeText(email);
+                        const originalText = newBtn.getAttribute('data-original-text') || newBtn.textContent;
+                        if (!newBtn.hasAttribute('data-original-text')) {
+                            newBtn.setAttribute('data-original-text', originalText);
+                        }
+                        newBtn.textContent = '¡Copiado!';
+                        newBtn.classList.add('copied');
+                        setTimeout(() => {
+                            newBtn.textContent = originalText;
+                            newBtn.classList.remove('copied');
+                        }, 2000);
+                    } catch (err) {
+                        console.error('Error al copiar: ', err);
+                    }
+                }
+            });
+        });
+    };
+
+    // Initialize on load
+    setupCopyButtons();
+    
+    // Support for Astro view transitions
+    document.addEventListener('astro:page-load', setupCopyButtons);
+</script>
