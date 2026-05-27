@@ -19,12 +19,14 @@ import heroBg from "../assets/hero-image.jpeg";
                 </div>
 
                 <h1 class="hero-headline-cinematic">
-                EMPRESA LIDER EN DISTRIBUCION Y VENTA DIRECTA DE REFACCIONES PARA TRANSMISION DE PONTENCIA.
+                    EMPRESA LIDER EN DISTRIBUCIÓN Y VENTA DIRECTA DE REFACCIONES
+                    PARA TRANSMISIÓN DE POTENCIA.
                 </h1>
 
                 <p class="hero-subheadline-cinematic">
-                    Disponibilidad en CDMX y Rio Blanco para talleres, flotillas y
-                    particulares. Cotizamos cualquier pieza en <strong></strong>
+                    Disponibilidad en CDMX y Rio Blanco para talleres, flotillas
+                    y particulares. Cotizamos cualquier pieza en <strong
+                    ></strong>
                 </p>
 
                 <div class="hero-actions-cinematic">
@@ -83,8 +85,16 @@ import heroBg from "../assets/hero-image.jpeg";
         /* Desaturamos la imagen para que el degradado sea el protagonista */
         filter: saturate(0.3) brightness(1.1) contrast(1.1);
         /* Difuminado inferior para que se integre con la siguiente sección */
-        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-        mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 1) 60%,
+            rgba(0, 0, 0, 0) 100%
+        );
+        mask-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 1) 60%,
+            rgba(0, 0, 0, 0) 100%
+        );
     }
 
     .bg-scrim {
@@ -97,18 +107,23 @@ import heroBg from "../assets/hero-image.jpeg";
         background: linear-gradient(
             105deg,
             var(--color-surface-dark) 5%,
-            rgba(29, 49, 129, 0.85) 50%, /* --color-brand-primary */
-            rgba(234, 88, 12, 0.45) 100% /* --color-brand-accent */
+            rgba(29, 49, 129, 0.85) 50%,
+            /* --color-brand-primary */ rgba(234, 88, 12, 0.45) 100%
+                /* --color-brand-accent */
         );
         mix-blend-mode: multiply; /* Esto fusiona el degradado con la imagen */
     }
-    
+
     /* Capa extra para legibilidad del texto en la izquierda */
     .bg-scrim::after {
-        content: '';
+        content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(90deg, var(--color-surface-dark) 0%, transparent 60%);
+        background: linear-gradient(
+            90deg,
+            var(--color-surface-dark) 0%,
+            transparent 60%
+        );
     }
 
     .hero-blueprint-grid {
@@ -203,7 +218,11 @@ import heroBg from "../assets/hero-image.jpeg";
             );
         }
         .bg-scrim::after {
-            background: linear-gradient(0deg, var(--color-surface-dark) 0%, transparent 60%);
+            background: linear-gradient(
+                0deg,
+                var(--color-surface-dark) 0%,
+                transparent 60%
+            );
         }
         .hero-container-full {
             padding: 0 var(--page-gutter);
