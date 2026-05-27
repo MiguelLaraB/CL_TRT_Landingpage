@@ -1,5 +1,8 @@
 ---
-
+import TRT_cdmx from "../assets/TRT_cdmx.jpeg";
+import TRT_rioblanco from "../assets/TRT_sucursal.jpeg";
+import TRT_inventario from "../assets/TRT_Inventario.jpeg";
+import TRT_operaciones from "../assets/TRT_operaciones.jpeg";
 ---
 
 <section class="content-section coverage-section" id="sucursales">
@@ -15,8 +18,8 @@
         </div>
 
         <div class="coverage-grid">
-            <!-- CDMX -->
-            <article class="cov-card active">
+            <!-- CDMX / TLANEPANTLA -->
+            <article class="cov-card active" data-glow>
                 <div class="cov-card-header">
                     <div class="cov-indicator glow-green"></div>
                     <h3>CDMX & Área Metropolitana</h3>
@@ -27,11 +30,30 @@
                         <strong>Cobertura total</strong> en toda la CDMX y municipios
                         conurbados del Edomex. Entregas el mismo día.
                     </p>
+                    <div class="cov-carousel" data-carousel>
+                        <div class="cov-carousel-track" data-track>
+                            <div class="cov-carousel-slide">
+                                <img class="cov-img" src={TRT_cdmx.src} alt="Sucursal CDMX moderna" style="object-position: center 30%;">
+                            </div>
+                            <div class="cov-carousel-slide">
+                                <img class="cov-img" src={TRT_operaciones.src} alt="Inventario CDMX">
+                            </div>
+                        </div>
+                        <div class="cov-carousel-controls">
+                            <button class="cov-carousel-btn prev" data-prev-btn aria-label="Anterior">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                            </button>
+                            <button class="cov-carousel-btn next" data-next-btn aria-label="Siguiente">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
+                        </div>
+                        <div class="cov-carousel-dots" data-dots></div>
+                    </div>
                 </div>
             </article>
 
-            <!-- Veracruz -->
-            <article class="cov-card active">
+            <!-- Veracruz / Orizaba -->
+            <article class="cov-card active" data-glow>
                 <div class="cov-card-header">
                     <div class="cov-indicator glow-green"></div>
                     <h3>Orizaba y Rio Blanco</h3>
@@ -42,6 +64,25 @@
                         <strong>Cobertura amplia</strong> (Orizaba, Río Blanco y alrededores).
                         Envíos foráneos al resto del estado por paquetería.
                     </p>
+                    <div class="cov-carousel" data-carousel>
+                        <div class="cov-carousel-track" data-track>
+                            <div class="cov-carousel-slide">
+                                <img class="cov-img" src={TRT_rioblanco.src} alt="Sucursal Rio Blanco">
+                            </div>
+                            <div class="cov-carousel-slide">
+                                <img class="cov-img" src={TRT_inventario.src} alt="Inventario Rio Blanco">
+                            </div>
+                        </div>
+                        <div class="cov-carousel-controls">
+                            <button class="cov-carousel-btn prev" data-prev-btn aria-label="Anterior">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                            </button>
+                            <button class="cov-carousel-btn next" data-next-btn aria-label="Siguiente">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
+                        </div>
+                        <div class="cov-carousel-dots" data-dots></div>
+                    </div>
                 </div>
             </article>
         </div>
@@ -49,171 +90,467 @@
 </section>
 
 <style>
-    /* --- Coverage Section --- */
+    /* ===== VARIABLES & CORE STYLES Scoped ===== */
     .coverage-section {
-        background-color: var(--color-surface-dark);
+        background: radial-gradient(circle at 10% 20%, rgba(234, 88, 12, 0.08), transparent 70%),
+                    linear-gradient(135deg, #070c18 0%, #0f172a 100%);
+        padding: 5rem 1.5rem;
+        position: relative;
+        isolation: isolate;
         color: white;
-        padding: var(--section-padding) 0;
+    }
+
+    .section-shell {
+        max-width: 1280px;
+        margin: 0 auto;
+        position: relative;
     }
 
     .coverage-header {
-        max-width: 700px;
-        margin-bottom: 56px;
+        text-align: center;
+        margin-bottom: 3.5rem;
+    }
+
+    .section-kicker {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-weight: 600;
+        color: var(--color-accent-primary, #ea580c);
+        background: rgba(234, 88, 12, 0.12);
+        display: inline-block;
+        padding: 0.35rem 1rem;
+        border-radius: 40px;
+        backdrop-filter: blur(4px);
+        margin-bottom: 1.2rem;
     }
 
     .coverage-section h2 {
-        color: var(--color-text-light);
-        font-size: clamp(2rem, 4vw, 2.8rem);
-        line-height: 1.15;
-        margin-bottom: 24px;
-    }
-
-    .coverage-section .section-kicker {
-        color: var(--color-accent-primary);
-        margin-bottom: 16px;
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        background: linear-gradient(135deg, #ffffff 60%, #f97316 90%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
     }
 
     .section-description {
         font-size: 1.1rem;
-        color: rgba(255, 255, 255, 0.7);
+        color: #a3b3d6;
+        max-width: 680px;
+        margin: 0 auto;
         line-height: 1.6;
     }
 
+    /* ===== CARD GRID ===== */
     .coverage-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 32px;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 2rem;
+        margin-top: 1rem;
     }
 
+    /* MODERN CARD DESIGN */
     .cov-card {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
-        padding: 32px;
-        transition: all 0.3s var(--motion-easing-default);
-        position: relative;
+        background: rgba(15, 23, 42, 0.65);
+        backdrop-filter: blur(16px);
+        border-radius: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease, border-color 0.2s;
         overflow: hidden;
-        backdrop-filter: blur(12px);
+        position: relative;
     }
 
-    .cov-card::before {
-        content: "";
+    .cov-card::after {
+        content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(
-            135deg,
-            rgba(29, 49, 129, 0.1),
-            rgba(234, 88, 12, 0.1)
-        );
+        border-radius: inherit;
+        padding: 1px;
+        background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.15), transparent 40%);
         opacity: 0;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.4s;
+        pointer-events: none;
     }
 
-    .cov-card:hover {
-        border-color: rgba(255, 255, 255, 0.25);
-        transform: translateY(-8px);
-        background: rgba(255, 255, 255, 0.08);
-    }
-
-    .cov-card:hover::before {
+    .cov-card:hover::after {
         opacity: 1;
     }
 
-    .cov-card.upcoming {
-        border-style: dashed;
-        opacity: 0.8;
+    .cov-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(255, 140, 40, 0.5);
+        box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(234, 88, 12, 0.2);
     }
 
     .cov-card-header {
+        padding: 1.75rem 1.75rem 0.5rem 1.75rem;
         display: flex;
         align-items: center;
-        gap: 12px;
-        margin-bottom: 20px;
         flex-wrap: wrap;
+        gap: 0.8rem;
+        border-bottom: 1px dashed rgba(255,255,255,0.08);
     }
 
     .cov-indicator {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
+        width: 12px;
+        height: 12px;
+        border-radius: 20px;
+        background: #10b981;
+        box-shadow: 0 0 10px #10b981;
+        animation: pulseGreen 2s infinite;
     }
 
-    .glow-green {
-        background: #10b981;
-        box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
-    }
-    .glow-orange {
-        background: #f59e0b;
-        box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+    @keyframes pulseGreen {
+        0% { opacity: 0.6; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);}
+        70% { opacity: 1; box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);}
+        100% { opacity: 0.6; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);}
     }
 
     .cov-card h3 {
-        font-size: 1.25rem;
-        color: #fff;
+        font-size: 1.45rem;
+        font-weight: 600;
+        color: white;
+        letter-spacing: -0.3px;
         margin: 0;
-        line-height: 1.2;
         flex: 1;
-        min-width: 180px;
     }
 
     .cov-badge {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(8px);
         font-size: 0.7rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        padding: 6px 12px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 100px;
-        color: rgba(255, 255, 255, 0.9);
-        border: 1px solid rgba(255, 255, 255, 0.2);
         font-weight: 700;
+        padding: 0.4rem 0.9rem;
+        border-radius: 60px;
+        border: 1px solid rgba(255,255,255,0.15);
+        color: #ffd8b5;
+        letter-spacing: 0.02em;
+    }
+
+    .cov-card-body {
+        padding: 0 1.75rem 1.75rem 1.75rem;
     }
 
     .cov-desc {
-        color: rgba(255, 255, 255, 0.75);
-        font-size: 1rem;
-        margin-bottom: 24px;
-        line-height: 1.6;
+        margin: 1rem 0 1.25rem 0;
+        color: #cddcf5;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        font-weight: 400;
     }
 
-    .cov-card strong {
-        color: #ffffff;
+    .cov-desc strong {
+        color: var(--color-accent-primary, #ea580c);
+        font-weight: 600;
     }
 
-    .cov-actions .btn-text {
+    /* ===== REFINED CAROUSEL ===== */
+    .cov-carousel {
+        position: relative;
+        width: 100%;
+        border-radius: 1.5rem;
+        overflow: hidden;
+        background: rgba(0, 0, 0, 0.35);
+        margin-top: 0.5rem;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        transition: box-shadow 0.3s;
+    }
+
+    .cov-carousel:hover {
+        box-shadow: 0 16px 28px rgba(0, 0, 0, 0.5);
+    }
+
+    .cov-carousel-track {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .cov-carousel-track::-webkit-scrollbar {
+        display: none;
+    }
+
+    .cov-carousel-slide {
+        flex: 0 0 100%;
+        width: 100%;
+        scroll-snap-align: start;
+        position: relative;
+        transition: transform 0.2s;
+    }
+
+    .cov-img {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1), filter 0.5s;
+        filter: brightness(0.88) contrast(1.05);
+    }
+
+    .cov-carousel:hover .cov-img {
+        transform: scale(1.02);
+        filter: brightness(0.98) contrast(1.08);
+    }
+
+    .cov-carousel-slide::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.3), transparent 60%);
+        pointer-events: none;
+    }
+
+    /* Botones de control premium */
+    .cov-carousel-controls {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: space-between;
+        padding: 0 14px;
+        pointer-events: none;
+        z-index: 12;
+        transition: opacity 0.3s ease;
+        opacity: 0;
+    }
+
+    .cov-carousel:hover .cov-carousel-controls {
+        opacity: 1;
+    }
+
+    .cov-carousel-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 60px;
+        background: rgba(10, 20, 35, 0.8);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
         color: #ffffff;
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 0.85rem;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        display: inline-flex;
+        display: flex;
         align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        pointer-events: auto;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .cov-carousel-btn svg {
+        stroke-width: 2.2;
+        transition: transform 0.2s;
+    }
+
+    .cov-carousel-btn:hover {
+        background: var(--color-accent-primary, #ea580c);
+        border-color: transparent;
+        transform: scale(1.08);
+        box-shadow: 0 0 18px rgba(234, 88, 12, 0.6);
+    }
+
+    /* dots modernos */
+    .cov-carousel-dots {
+        position: absolute;
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
         gap: 10px;
-        transition: all 0.3s;
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        z-index: 12;
+        background: rgba(5, 10, 22, 0.6);
+        padding: 6px 14px;
         border-radius: 100px;
-        padding: 12px 20px;
-        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.2s;
     }
 
-    .cov-actions .btn-text:hover {
-        background: white;
-        color: var(--color-brand-primary);
-        border-color: white;
+    .cov-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.5);
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
     }
 
-    .cov-actions .btn-text-muted {
-        opacity: 0.5;
-        cursor: not-allowed;
+    .cov-dot.active {
+        background: var(--color-accent-primary, #ea580c);
+        width: 24px;
+        border-radius: 8px;
+        box-shadow: 0 0 8px rgba(234, 88, 12, 0.6);
     }
 
-    @media (max-width: 640px) {
-        .coverage-grid {
-            grid-template-columns: 1fr;
+    /* Responsive */
+    @media (max-width: 720px) {
+        .coverage-section {
+            padding: 3rem 1rem;
         }
+        .cov-card-header {
+            padding: 1.25rem 1.25rem 0rem 1.25rem;
+        }
+        .cov-card-body {
+            padding: 0 1.25rem 1.5rem 1.25rem;
+        }
+        .cov-img {
+            height: 210px;
+        }
+        .cov-carousel-btn {
+            width: 36px;
+            height: 36px;
+        }
+        .cov-carousel-dots {
+            bottom: 10px;
+            padding: 4px 12px;
+        }
+    }
 
-        .cov-card {
-            padding: 24px;
+    @media (max-width: 480px) {
+        .cov-img {
+            height: 180px;
+        }
+        .cov-card h3 {
+            font-size: 1.25rem;
+        }
+        .cov-badge {
+            font-size: 0.6rem;
         }
     }
 </style>
+
+<script>
+    function initCarousels() {
+        const carousels = document.querySelectorAll('[data-carousel]');
+        
+        carousels.forEach(carousel => {
+            const track = carousel.querySelector('[data-track]');
+            const slides = track?.querySelectorAll('.cov-carousel-slide');
+            const prevBtn = carousel.querySelector('[data-prev-btn]');
+            const nextBtn = carousel.querySelector('[data-next-btn]');
+            const dotsContainer = carousel.querySelector('[data-dots]');
+            
+            if (!track || !slides || slides.length === 0) return;
+            
+            // Si solo hay 1 slide, ocultar controles y dots
+            if (slides.length <= 1) {
+                if (prevBtn) (prevBtn as HTMLElement).style.display = 'none';
+                if (nextBtn) (nextBtn as HTMLElement).style.display = 'none';
+                if (dotsContainer) (dotsContainer as HTMLElement).style.display = 'none';
+                return;
+            }
+            
+            let currentIndex = 0;
+            
+            // Crear dots
+            if (dotsContainer) {
+                dotsContainer.innerHTML = '';
+                slides.forEach((_, idx) => {
+                    const dot = document.createElement('button');
+                    dot.classList.add('cov-dot');
+                    if (idx === 0) dot.classList.add('active');
+                    dot.setAttribute('aria-label', `Ir a imagen ${idx + 1}`);
+                    dot.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        goToSlide(idx);
+                    });
+                    dotsContainer.appendChild(dot);
+                });
+            }
+            
+            const dots = dotsContainer ? dotsContainer.querySelectorAll('.cov-dot') : [];
+            
+            function updateActiveDot() {
+                if (!dots.length) return;
+                dots.forEach((dot, i) => {
+                    if (i === currentIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            function goToSlide(index: number) {
+                if (index < 0) index = slides.length - 1;
+                if (index >= slides.length) index = 0;
+                currentIndex = index;
+                const slideWidth = (slides[0] as HTMLElement).clientWidth;
+                if (slideWidth > 0) {
+                    track.scrollTo({
+                        left: slideWidth * currentIndex,
+                        behavior: 'smooth'
+                    });
+                }
+                updateActiveDot();
+            }
+            
+            if (prevBtn) {
+                prevBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    goToSlide(currentIndex - 1);
+                });
+            }
+            if (nextBtn) {
+                nextBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    goToSlide(currentIndex + 1);
+                });
+            }
+            
+            // Sincronizar con scroll manual
+            let scrollEndTimer: NodeJS.Timeout;
+            track.addEventListener('scroll', () => {
+                clearTimeout(scrollEndTimer);
+                scrollEndTimer = setTimeout(() => {
+                    const slideWidth = (slides[0] as HTMLElement)?.clientWidth;
+                    if (slideWidth && slideWidth > 0) {
+                        const newIndex = Math.round(track.scrollLeft / slideWidth);
+                        if (newIndex !== currentIndex && newIndex >= 0 && newIndex < slides.length) {
+                            currentIndex = newIndex;
+                            updateActiveDot();
+                        }
+                    }
+                }, 80);
+            }, { passive: true });
+        });
+    }
+
+    // Efecto glow en tarjetas
+    function addDynamicGlow() {
+        const cards = document.querySelectorAll('.cov-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e: any) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                (card as HTMLElement).style.setProperty('--mouse-x', `${x}px`);
+                (card as HTMLElement).style.setProperty('--mouse-y', `${y}px`);
+            });
+            card.addEventListener('mouseleave', () => {
+                (card as HTMLElement).style.setProperty('--mouse-x', `50%`);
+                (card as HTMLElement).style.setProperty('--mouse-y', `50%`);
+            });
+        });
+    }
+
+    // Inicialización robusta para Astro
+    document.addEventListener('DOMContentLoaded', () => {
+        initCarousels();
+        addDynamicGlow();
+    });
+    document.addEventListener('astro:page-load', () => {
+        initCarousels();
+        addDynamicGlow();
+    });
+</script>
