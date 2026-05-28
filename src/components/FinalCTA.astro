@@ -1,5 +1,3 @@
-
-
 <section
     class="content-section final-cta-section"
     aria-labelledby="final-cta-title"
@@ -25,8 +23,6 @@
                     role="list"
                     aria-label="Indicadores de servicio TRT"
                 >
-
-                
                 </div>
             </div>
 
@@ -40,7 +36,6 @@
                     aria-label="Flujo de cotización por WhatsApp"
                 >
                     <div class="final-quote-core">
-
                         <div class="quote-docket">
                             <span class="docket-label">Flujo recomendado</span>
                             <ol class="quote-steps">
@@ -60,13 +55,10 @@
                                 </li>
                                 <li>
                                     <span class="quote-step-index">03</span>
-                                    <span
-                                        >Confirmas entrega local o envío</span
-                                    >
+                                    <span>Confirmas entrega local o envío</span>
                                 </li>
                             </ol>
                         </div>
-
 
                         <div class="contact-actions-grid">
                             <a
@@ -84,22 +76,38 @@
                             >
                                 <span class="btn-city">WhatsApp Rio Blanco</span
                                 >
-                                <span class="btn-subtitle">SUCURSAL Rio blanco</span>
+                                <span class="btn-subtitle"
+                                    >SUCURSAL Rio blanco</span
+                                >
                             </a>
                         </div>
-                        
+
                         <div class="contact-emails-text">
                             <div class="email-item">
                                 <strong>Correo CDMX:</strong>
-                                <button type="button" class="copy-email-btn" data-email="trt.ventas1@transmisionesyrodamientostlalnepantla.com.mx">trt.ventas1@transmisionesyrodamientostlalnepantla.com.mx</button>
-                                <button type="button" class="copy-email-btn" data-email="trt.ventas3@transmisionesyrodamientostlalnepantla.com.mx">trt.ventas3@transmisionesyrodamientostlalnepantla.com.mx</button>
+                                <button
+                                    type="button"
+                                    class="copy-email-btn"
+                                    data-email="trt.ventas1@transmisionesyrodamientostlanepantla.com.mx"
+                                    >trt.ventas1@transmisionesyrodamientostlanepantla.com.mx</button
+                                >
+                                <button
+                                    type="button"
+                                    class="copy-email-btn"
+                                    data-email="trt.ventas3@transmisionesyrodamientostlanepantla.com.mx"
+                                    >trt.ventas3@transmisionesyrodamientostlanepantla.com.mx</button
+                                >
                             </div>
                             <div class="email-item">
                                 <strong>Correo Rio Blanco:</strong>
-                                <button type="button" class="copy-email-btn" data-email="trt.ventas6@transmisionesyrodamientostlalnepantla.com.mx">trt.ventas6@transmisionesyrodamientostlalnepantla.com.mx</button>
+                                <button
+                                    type="button"
+                                    class="copy-email-btn"
+                                    data-email="trt.ventas6@transmisionesyrodamientostlanepantla.com.mx"
+                                    >trt.ventas6@transmisionesyrodamientostlanepantla.com.mx</button
+                                >
                             </div>
                         </div>
-
                     </div>
                 </article>
             </div>
@@ -445,7 +453,7 @@
         .contact-emails-text {
             grid-template-columns: 1fr;
         }
-        
+
         .contact-emails-text {
             gap: 20px;
         }
@@ -454,29 +462,34 @@
 
 <script>
     const setupCopyButtons = () => {
-        const copyBtns = document.querySelectorAll('.copy-email-btn');
-        copyBtns.forEach(btn => {
+        const copyBtns = document.querySelectorAll(".copy-email-btn");
+        copyBtns.forEach((btn) => {
             // Remove existing listener to avoid duplicates if setup is called multiple times
             const newBtn = btn.cloneNode(true);
             btn.parentNode.replaceChild(newBtn, btn);
-            
-            newBtn.addEventListener('click', async () => {
-                const email = newBtn.getAttribute('data-email');
+
+            newBtn.addEventListener("click", async () => {
+                const email = newBtn.getAttribute("data-email");
                 if (email) {
                     try {
                         await navigator.clipboard.writeText(email);
-                        const originalText = newBtn.getAttribute('data-original-text') || newBtn.textContent;
-                        if (!newBtn.hasAttribute('data-original-text')) {
-                            newBtn.setAttribute('data-original-text', originalText);
+                        const originalText =
+                            newBtn.getAttribute("data-original-text") ||
+                            newBtn.textContent;
+                        if (!newBtn.hasAttribute("data-original-text")) {
+                            newBtn.setAttribute(
+                                "data-original-text",
+                                originalText,
+                            );
                         }
-                        newBtn.textContent = '¡Copiado!';
-                        newBtn.classList.add('copied');
+                        newBtn.textContent = "¡Copiado!";
+                        newBtn.classList.add("copied");
                         setTimeout(() => {
                             newBtn.textContent = originalText;
-                            newBtn.classList.remove('copied');
+                            newBtn.classList.remove("copied");
                         }, 2000);
                     } catch (err) {
-                        console.error('Error al copiar: ', err);
+                        console.error("Error al copiar: ", err);
                     }
                 }
             });
@@ -485,7 +498,7 @@
 
     // Initialize on load
     setupCopyButtons();
-    
+
     // Support for Astro view transitions
-    document.addEventListener('astro:page-load', setupCopyButtons);
+    document.addEventListener("astro:page-load", setupCopyButtons);
 </script>
