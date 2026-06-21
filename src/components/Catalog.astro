@@ -1,7 +1,42 @@
 ---
 import { Image } from "astro:assets";
 import catalogPreview from "../assets/catalog-preview.png";
-import catalogGeneral from "../assets/Catalogo2026.pdf";
+
+const catalogs = [
+  {
+    title: "Catálogo Master",
+    description:
+      "Líneas completas de Rodamientos, Bandas, Cadenas y Transmisión de Potencia.",
+    techId: "SPEC-TRT-MASTER",
+    lines: "+20",
+    rev: "2026",
+    pdf: "/CATALOGO_MASTER.pdf",
+  },
+  {
+    title: "Catálogo W-MAX",
+    description: "Especializado en componentes de transmisión de potencia de alta resistencia.",
+    techId: "SPEC-TRT-WMAX",
+    lines: "+15",
+    rev: "2026",
+    pdf: "/CATALOGO-W-MAX.pdf",
+  },
+  {
+    title: "Catálogo C-FAG",
+    description: "Soluciones técnicas en rodamientos y componentes de precisión.",
+    techId: "SPEC-TRT-CFAG",
+    lines: "+12",
+    rev: "2026",
+    pdf: "/C-FAG.pdf",
+  },
+  {
+    title: "Catálogo Placas 2026",
+    description: "Línea completa de placas y accesorios para transmisión mecánica.",
+    techId: "SPEC-TRT-PLACAS",
+    lines: "+10",
+    rev: "2026",
+    pdf: "/PLACAS%202026.pdf",
+  },
+];
 ---
 
 <section class="content-section catalog-section" id="catalogos">
@@ -13,64 +48,62 @@ import catalogGeneral from "../assets/Catalogo2026.pdf";
             ficha técnica o solicita una cotización inmediata.
         </p>
 
-        <div class="catalog-single-wrapper">
-            <!-- CARD: Catálogo General -->
-            <article class="catalog-card-outer double-bezel-outer-light">
-                <div class="catalog-card-inner double-bezel-inner-light">
-                    <div class="catalog-visual">
-                        <Image
-                            src={catalogPreview}
-                            alt="Vista previa del Catálogo TRT 2025"
-                            class="catalog-img"
-                        />
-                        <div class="catalog-overlay">
-                            <span class="tech-id">SPEC-TRT-2025</span>
-                        </div>
-                    </div>
-                    <div class="catalog-details">
-                        <div class="catalog-content">
-                            <div class="catalog-header">
-                                <h3>Catálogo General de Productos</h3>
-                            </div>
-                            <p>
-                                Líneas completas de Rodamientos, Bandas, Cadenas y
-                                Transmisión de Potencia.
-                            </p>
-                            <div class="catalog-specs">
-                                <div class="spec-item">
-                                    <span class="spec-label">LÍNEAS</span>
-                                    <span class="spec-value">+20</span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">REV</span>
-                                    <span class="spec-value">2026.05</span>
-                                </div>
+        <div class="catalog-grid">
+            {catalogs.map((cat) => (
+                <article class="catalog-card-outer double-bezel-outer-light">
+                    <div class="catalog-card-inner double-bezel-inner-light">
+                        <div class="catalog-visual">
+                            <Image
+                                src={catalogPreview}
+                                alt={`Vista previa del ${cat.title}`}
+                                class="catalog-img"
+                            />
+                            <div class="catalog-overlay">
+                                <span class="tech-id">{cat.techId}</span>
                             </div>
                         </div>
-                        <div class="catalog-footer">
-                            <a href={catalogGeneral} download class="btn--pdf-full">
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    width="18"
-                                    height="18"
-                                    aria-hidden="true"
-                                    ><path
-                                        d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
-                                    ></path><polyline points="7 10 12 15 17 10"
-                                    ></polyline><line x1="12" y1="15" x2="12" y2="3"
-                                    ></line></svg
-                                >
-                                Descargar Ficha PDF
-                            </a>
+                        <div class="catalog-details">
+                            <div class="catalog-content">
+                                <div class="catalog-header">
+                                    <h3>{cat.title}</h3>
+                                </div>
+                                <p>{cat.description}</p>
+                                <div class="catalog-specs">
+                                    <div class="spec-item">
+                                        <span class="spec-label">LÍNEAS</span>
+                                        <span class="spec-value">{cat.lines}</span>
+                                    </div>
+                                    <div class="spec-item">
+                                        <span class="spec-label">REV</span>
+                                        <span class="spec-value">{cat.rev}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="catalog-footer">
+                                <a href={cat.pdf} download class="btn--pdf-full">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        width="18"
+                                        height="18"
+                                        aria-hidden="true"
+                                        ><path
+                                            d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                                        ></path><polyline points="7 10 12 15 17 10"
+                                        ></polyline><line x1="12" y1="15" x2="12" y2="3"
+                                        ></line></svg
+                                    >
+                                    Descargar Ficha PDF
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </article>
+                </article>
+            ))}
         </div>
     </div>
 </section>
@@ -105,18 +138,18 @@ import catalogGeneral from "../assets/Catalogo2026.pdf";
         margin-left: 0;
     }
 
-    .catalog-single-wrapper {
-        display: flex;
-        justify-content: center;
-        max-width: 800px; /* Ampliado para layout horizontal */
+    .catalog-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+        max-width: 960px;
         margin: 0 auto;
     }
 
-    /* Forzar layout horizontal en desktop */
     .catalog-card-inner {
         display: flex;
-        flex-direction: row !important;
-        align-items: stretch;
+        flex-direction: column;
+        height: 100%;
     }
 
     .btn--pdf-full {
@@ -151,13 +184,12 @@ import catalogGeneral from "../assets/Catalogo2026.pdf";
     }
 
     .catalog-visual {
-        flex: 0 0 40%;
         position: relative;
-        background: transparent; /* Sin fondo gris para que se vea solo el documento */
+        background: transparent;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 32px; /* Espacio para que la sombra no se corte */
+        padding: 32px;
     }
 
     .catalog-img {
@@ -275,15 +307,9 @@ import catalogGeneral from "../assets/Catalogo2026.pdf";
         display: flex; /* Cambiado a flex ya que solo hay un botón */
     }
 
-    @media (max-width: 980px) {
-        .catalog-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
     @media (max-width: 768px) {
-        .catalog-card-inner {
-            flex-direction: column !important;
+        .catalog-grid {
+            grid-template-columns: 1fr;
         }
         
         .catalog-visual {
@@ -298,12 +324,6 @@ import catalogGeneral from "../assets/Catalogo2026.pdf";
 
         .catalog-footer {
             padding: 0 24px 24px;
-        }
-    }
-
-    @media (max-width: 640px) {
-        .catalog-grid {
-            grid-template-columns: 1fr;
         }
     }
 </style>
